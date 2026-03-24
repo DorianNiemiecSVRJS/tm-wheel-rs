@@ -429,7 +429,7 @@ impl<T, A: SlabAllocator<TimerNode<T>>, const LEVELS: usize, const WHEEL_SIZE: u
             let wheel = &self.wheels[level];
             let now = (self.now >> level_bits) << level_bits;
 
-            for bucket_offset in 0..Self::E_MASK {
+            for bucket_offset in 0..=Self::E_MASK {
                 let cursor = (cursor_base + bucket_offset) & Self::E_MASK;
                 let bucket = &wheel[cursor as usize];
 
